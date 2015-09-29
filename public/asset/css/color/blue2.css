@@ -1,0 +1,10 @@
+/* =========================================
+ROYAL - SKIN COLOR FOR THE TEMPLATE
+========================================= */
+
+.btn-primary.btn-filled,.btn-primary:focus,.btn:hover,.colorcover::after{background: #007BFF;}
+.btn-primary,.btn-primary:focus,.btn:hover{border-color: #007BFF;}
+.text-primary,.icon-box i,.btn-primary{color: #007BFF}
+.bg-color {background: #007BFF!important;}
+::-moz-selection{background: #007BFF;}
+::selection {background: #007BFF;}

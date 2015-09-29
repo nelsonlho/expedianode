@@ -1,35 +1,59 @@
 {
-  "name": "OpenShift-Sample-App",
-  "version": "1.0.0",
-  "description": "OpenShift Sample Application",
+  "name": "CodeFog",
+  "description": "Making Code Sharing More Communal and Educational",
   "keywords": [
-    "OpenShift",
-    "Node.js",
-    "application",
-    "openshift"
+    "express",
+    "mongoose",
+    "mongodb",
+    "passport",
+    "demo"
   ],
-  "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
-  },
-  "homepage": "http://www.openshift.com/",
+  "version": "4.0.0",
+  "private": false,
+  "author": "m@codecloud.me | @itsdeshazer",
   "repository": {
     "type": "git",
-    "url": "https://github.com/openshift/origin-server"
+    "from":"url base below",
+    "url": "https://github.com/madhums/node-express-mongoose-demo.git"
   },
-
   "engines": {
-    "node": ">= 0.6.0",
-    "npm": ">= 1.0.0"
+    "node": "0.12.6"
   },
-
+  "main":"server.js",
   "dependencies": {
-    "express": "~3.4.4"
+    "async": "1.3.0",
+    "body-parser": "1.13.2",
+    "compression": "1.5.1",
+    "connect-flash": "0.1.1",
+    "connect-mongo": "0.8.1",
+    "cookie-parser": "1.3.5",
+    "cookie-session": "1.2.0",
+    "csurf": "1.8.3",
+    "express": "4.13.1",
+    "express-session": "1.11.3",
+    "forever": "0.14.2",
+    "imager": "0.2.7",
+    "method-override": "2.3.3",
+    "mongoose": "4.0.6",
+    "morgan": "1.6.1",
+    "multer": "0.1.8",
+    "notifier": "0.1.7",
+    "passport": "0.2.2",
+    "passport-facebook": "2.0.0",
+    "passport-github": "0.1.5",
+    "passport-google-oauth": "0.2.0",
+    "passport-linkedin": "0.1.3",
+    "passport-local": "1.0.0",
+    "passport-twitter": "1.0.3",
+    "swig": "1.4.2",
+    "view-helpers": "0.1.5",
+    "winston": "1.0.1",
+    "emailjs":""
   },
-  "devDependencies": {},
-  "bundleDependencies": [],
-
-  "private": true,
-  "main": "server.js"
+  "devDependencies": {
+    "supertest": "1.0.1",
+    "should": "7.0.1",
+    "mocha": "2.2.5",
+    "nodemon": "1.3.7"
+  }
 }
