@@ -21,7 +21,9 @@ var comments = require('../app/controllers/comments.js');
 var welcome = require('../app/controllers/welcome.js');
 var api = require('../app/controllers/api.js');
 var tags = require('../app/controllers/tags.js');
+var endpoint = require('../app/controllers/endpoint.js');  
 var auth = require('./middlewares/authorization');
+
 
 /**
  * Route middlewares
@@ -37,6 +39,9 @@ var commentAuth = [auth.requiresLogin, auth.comment.hasAuthorization];
 module.exports = function (app, passport) {
 
   // user routes
+  app.get('/expedia', endpoint.callExpedia);
+  app.get('/airbnb', endpoint.callAirbnb);
+  app.get('/', articles.index);
   app.get('/login', users.login);
   app.get('/signup', users.signup);
   app.get('/logout', users.logout);
@@ -109,7 +114,7 @@ module.exports = function (app, passport) {
   app.delete('/articles/:id', articleAuth, articles.destroy);
 
   // home route
-  app.get('/', welcome.index);
+  app.get('/', articles.index);
   app.get('/beta', articles.index);
 
 

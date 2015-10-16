@@ -48,7 +48,10 @@
     "swig": "1.4.2",
     "view-helpers": "0.1.5",
     "winston": "1.0.1",
-    "emailjs":""
+    "emailjs":"",
+    "cheerio": "*",
+    "xml2js": "*",
+    "request": "*"
   },
   "devDependencies": {
     "supertest": "1.0.1",
