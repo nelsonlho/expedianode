@@ -17,6 +17,7 @@ fs.readdirSync( './app/controllers').forEach(function (file) {
 */
 var users = require('../app/controllers/users.js');
 var articles = require('../app/controllers/articles.js');
+var spaces = require('../app/controllers/spaces.js');
 var comments = require('../app/controllers/comments.js');
 var welcome = require('../app/controllers/welcome.js');
 var api = require('../app/controllers/api.js');

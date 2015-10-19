@@ -1,0 +1,28 @@
+<div class="article">
+  <h3>
+    <a href="{{ '/spaces/' + space._id }}" title="{{ space.title }}">
+      {{ space.title }}
+    </a>
+  </h3>
+  <p>{{ space.body }}</p>
+
+  <span class="muted">{{ space.createdAt.toISOString()|date('M d, Y  h:i a') }}</span>
+
+  {% if (space.user) %}
+    &nbsp; - &nbsp;
+    <span>Author: </span>
+    <a href="{{ '/users/' + space.user._id }}">
+      {{ space.user.name || space.user.username }}
+    </a>
+  {% endif %}
+
+  {% if (space.tags) %}
+    &nbsp; - &nbsp;
+    <span>Tags: </span>
+    {% for tag in article.tags.split(',') %}
+      <i class="muted fa fa-tag"></i>&nbsp;
+      <a href="{{ '/tags/' + tag }}" class="tag">{{ tag }}</a>
+      &nbsp;&nbsp;
+    {% endfor %}
+  {% endif %}
+</div>
