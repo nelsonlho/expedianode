@@ -7,12 +7,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">CodeFog</a>
+      <a href="/" class="navbar-brand">Bookspace</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="{% if (isActive('/articles/new')) %}active{% endif %}">
-          <a href="/articles/new" title="new article">New</a>
+        <li class="{% if (isActive('/spaces/new')) %}active{% endif %}">
+          <a href="/spaces/new" title="new space">List Space</a>
         </li>
 
         {% if (req.isAuthenticated()) %}

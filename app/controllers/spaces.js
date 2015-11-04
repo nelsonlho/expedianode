@@ -78,7 +78,7 @@ exports.create = function (req, res) {
     }
     res.render('spaces/new', {
       title: 'New Space',
-      spacee: space,
+      space: space,
       errors: utils.errors(err.errors || err)
     });
   });
@@ -122,6 +122,28 @@ exports.update = function (req, res){
   });
 };
 
+exports.book = function(req, res){
+  var space = req.space;
+  var startDate = req.arrival;
+  var endDate = req.departure;
+
+  space.book.user = req.user;
+  space.book.user.startDate = startDate;
+  space.book.user.endDate = endDate;
+  space.bookAndSave(function (err) {
+    if (!err) {
+      req.flash('success', 'Successfully booked space!');
+      return res.redirect('/spaces/'+space._id);
+    }
+    res.render('spaces/new', {
+      title: 'New Space',
+      space: space,
+      errors: utils.errors(err.errors || err)
+    });
+  });
+
+};
+
 /**
  * Show
  */
@@ -144,3 +166,5 @@ exports.destroy = function (req, res){
     res.redirect('/spaces');
   });
 };
+
+

@@ -26,6 +26,7 @@ var endpoint = require('../app/controllers/endpoint.js');
 var auth = require('./middlewares/authorization');
 
 
+
 /**
  * Route middlewares
  */
@@ -113,6 +114,17 @@ module.exports = function (app, passport) {
   app.get('/articles/:id/edit', articleAuth, articles.edit);
   app.put('/articles/:id', articleAuth, articles.update);
   app.delete('/articles/:id', articleAuth, articles.destroy);
+
+  // spaces routes
+  app.param('spaceId', spaces.load);
+  app.get('/spaces', spaces.index);
+  app.get('/spaces/new', auth.requiresLogin, spaces.new);
+  app.post('/spaces', auth.requiresLogin, spaces.create);
+  app.get('/spaces/:spaceId', spaces.show);
+  app.get('/spaces/:spaceId/edit', spaces.edit);
+  app.put('/spaces/:spaceId', spaces.update);
+  app.post('/spaces/:spaceId/book', spaces.book);
+  app.delete('/spaces/:spaceId', spaces.destroy);
 
   // home route
   app.get('/', articles.index);
