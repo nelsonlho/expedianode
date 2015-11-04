@@ -27,7 +27,7 @@ exports.load = function (req, res, next, id){
  * List
  */
 
-exports.index = function (req, res){
+exports.index = function (req, res) {
   var page = (req.params.page > 0 ? req.params.page : 1) - 1;
   var perPage = 30;
   var options = {
