@@ -49,9 +49,10 @@
     "view-helpers": "0.1.5",
     "winston": "1.0.1",
     "emailjs":"",
-    "cheerio": "*",
-    "xml2js": "*",
-    "request": "*"
+    "cheerio": "",
+    "xml2js": "",
+    "request": "",
+    "stripe":""
   },
   "devDependencies": {
     "supertest": "1.0.1",

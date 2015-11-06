@@ -7,6 +7,9 @@ var mongoose = require('mongoose')
 var Space = mongoose.model('Space')
 var utils = require('../../lib/utils')
 var extend = require('util')._extend
+var stripe = require('stripe')('sk_test_37uXixP4R2jNUlk1al7QGd8D');
+
+
 
 /**
  * Load
@@ -144,12 +147,69 @@ exports.book = function(req, res){
 
 };
 
+
+
+
+exports.paymentProcess = function(req, res){
+  var space = req.space;
+  var startDate = req.arrival;
+  var endDate = req.departure;
+
+  //space.book.user = req.user;
+  //space.book.user.startDate = startDate;
+  //space.book.user.endDate = endDate;
+
+  if(!req.body.token){
+
+
+    
+
+
+    res.send({"status":"fail", "msg":"please send token"}); 
+
+    return;
+
+
+  }
+
+
+
+  stripe.charges.create({
+  amount: 400,
+  currency: "usd",
+  source: req.body.token, // obtained with Stripe.js
+  description: "Charge for test@example.com"
+}, function(err, charge) {
+
+  if(!err){
+    res.send({'status':"success", "msg":"processed payment"})
+    return;
+  }
+  else{
+  res.send({"status":"fail", "msg":err}); 
+
+  }
+
+
+  // asynchronously called
+});
+
+};
+
 /**
  * Show
  */
 
 exports.show = function (req, res){
   res.render('spaces/show', {
+    title: req.space.title,
+    space: req.space
+  });
+};
+
+
+exports.showBookingPage = function (req, res){
+  res.render('spaces/book', {
     title: req.space.title,
     space: req.space
   });
