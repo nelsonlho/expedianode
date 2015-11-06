@@ -124,6 +124,9 @@ module.exports = function (app, passport) {
   app.get('/spaces/:spaceId/edit', spaces.edit);
   app.put('/spaces/:spaceId', spaces.update);
   app.post('/spaces/:spaceId/book', spaces.book);
+
+  app.get('/spaces/:spaceId/book', spaces.showBookingPage);
+   app.post('/spaces/pay', spaces.paymentProcess);
   app.delete('/spaces/:spaceId', spaces.destroy);
 
   // home route

@@ -23,13 +23,33 @@
       } else {
         // token contains id, last4, and card type
         var token = response.id;
+        alert(token)
+
+
+        $.ajax({url:'/spaces/pay', method:"POST", data:{'token':token, '_csrf':$('#_csrf').val()}, complete:function(transport){
+
+            var resp = $.parseJSON(transport.responseText);
+            console.log(resp);
+            if(resp.status =="success"){
+
+              alert('payment processed');
+
+            }
+            else{
+              alert('non processed')
+            }
+
+
+        }
+      })
         // Insert the token into the form so it gets submitted to the server
         $form.append($('<input type="hidden" name="stripeToken" />').val(token));
         // and re-submit
         $form.get(0).submit();
       }
     };
-    jQuery(function($) {
+
+    function activateFormForStripe(){
       $('#payment-form').submit(function(e) {
         var $form = $(this);
         // Disable the submit button to prevent repeated clicks
@@ -38,13 +58,30 @@
         // Prevent the form from submitting with the default action
         return false;
       });
-    });
+   }
+
+
+   function doNothing(){
+
+
+   }
+
+   $(window).load(function(){
+
+    activateFormForStripe();
+   })
+
+
+
+
+
   </script>
 </head>
 <body>
   <h1>Book Now</h1>
+<!--{{ '/spaces/' + space._id + '/book' }}-->
 
-  <form method="post" action="{{ '/spaces/' + space._id + '/book' }}" role="form">
+  <form method="post" action="javascript:doNothing()" role="form" id="payment-form">
     <span class="payment-errors"></span>
       	<div class="form-row form-field field-date">
         <input type="text" class="field-input calendar-input" id="arrival" placeholder="Check-in">
@@ -77,6 +114,8 @@
       <input type="text" size="4" data-stripe="exp-year"/>
     </div>
 
+
+  <input type="hidden" name="_csrf"  id="_csrf" value="{{ csrf_token }}">
 
  
 
